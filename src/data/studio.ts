@@ -11,8 +11,8 @@ export const STUDIO_CONFIG = {
   instagramUrl: "https://instagram.com/Leo_essential",
   squareBookingUrl: "https://square.site/book/leoessential",
   location: "Lagos, Nigeria (Private Studio Sanctuary — By Appointment)",
-  logoVector: "/logos/leoessential-vector-logo.svg",
-  logoPng: "/logos/leoessential-png-logo.png",
+  logoVector: `${import.meta.env.BASE_URL}logos/leoessential-vector-logo.svg`,
+  logoPng: `${import.meta.env.BASE_URL}logos/leoessential-png-logo.png`,
   hours: [
     { days: "Tuesday – Friday", time: "9:30 AM – 6:30 PM", note: "Standard Appointments" },
     { days: "Saturday", time: "10:00 AM – 7:00 PM", note: "High Demand Peak Day" },

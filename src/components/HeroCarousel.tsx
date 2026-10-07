@@ -239,7 +239,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onExploreClick }) =>
       */}
       <div className="absolute bottom-6 sm:bottom-10 left-6 sm:left-12 z-20 hidden sm:flex items-center gap-3 text-white/80">
         <img
-          src="/logos/leoessential-vector-logo.svg"
+          src={STUDIO_CONFIG.logoVector}
           alt="Leoessential Insignia"
           className="w-5 h-5 object-contain"
         />

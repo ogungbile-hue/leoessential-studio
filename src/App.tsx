@@ -38,6 +38,7 @@ const STUDIO_WHATSAPP_NUMBER = "2348145356053";
 const STUDIO_EMAIL = "elegundeadedoyin@gmail.com";
 const STUDIO_INSTAGRAM_HANDLE = "@Leo_essential";
 const STUDIO_INSTAGRAM_URL = "https://instagram.com/Leo_essential";
+const LOGO_VECTOR = `${import.meta.env.BASE_URL}logos/leoessential-vector-logo.svg`;
 
 // Safe Image component with fail-safe fallback to prevent broken frames
 interface ImageWithFallbackProps {
@@ -57,7 +58,7 @@ function ImageWithFallback({ src, alt, className = "", fallbackLabel, category =
         <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#C49A70_1px,transparent_1px)] [background-size:16px_16px]" />
         <div className="w-12 h-12 rounded-full bg-[#FAF8F5] border border-[#C49A70]/30 flex items-center justify-center p-2 mb-2 shadow-sm">
           <img
-            src="/logos/leoessential-vector-logo.svg"
+            src={LOGO_VECTOR}
             alt="Leoessential"
             className="w-full h-full object-contain"
           />
@@ -560,7 +561,7 @@ export default function App() {
             className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none shrink-0"
           >
             <img
-              src="/logos/leoessential-vector-logo.svg"
+              src={LOGO_VECTOR}
               alt="Leoessential Insignia"
               className="w-7 h-7 sm:w-8 sm:h-8 object-contain transition-transform duration-500 group-hover:scale-105"
             />
@@ -658,7 +659,7 @@ export default function App() {
             {/* Brand Monogram in Mobile Drawer */}
             <div className="flex items-center justify-center gap-2.5 pb-3 border-b border-inherit">
               <img
-                src="/logos/leoessential-vector-logo.svg"
+                src={LOGO_VECTOR}
                 alt="Leoessential Insignia"
                 className="w-7 h-7 object-contain"
               />
@@ -823,7 +824,7 @@ export default function App() {
               {/* Background watermark seal */}
               <div className="absolute right-[-20px] sm:right-6 -bottom-10 sm:-bottom-12 opacity-[0.07] pointer-events-none select-none">
                 <img
-                  src="/logos/leoessential-vector-logo.svg"
+                  src={LOGO_VECTOR}
                   alt=""
                   className="w-56 h-56 sm:w-72 sm:h-72 object-contain"
                 />
@@ -832,7 +833,7 @@ export default function App() {
               <div className="max-w-3xl space-y-4 relative z-10">
                 <div className="flex items-center gap-2">
                   <img
-                    src="/logos/leoessential-vector-logo.svg"
+                    src={LOGO_VECTOR}
                     alt="Leoessential Emblem"
                     className="w-4 h-4 object-contain"
                   />
@@ -1221,7 +1222,7 @@ export default function App() {
                         What Every Student Receives
                       </h4>
                       <img
-                        src="/logos/leoessential-vector-logo.svg"
+                        src={LOGO_VECTOR}
                         alt="Accredited Leoessential Certificate"
                         className="w-7 h-7 object-contain opacity-90"
                       />
@@ -1624,7 +1625,7 @@ export default function App() {
             <div className="space-y-3">
               <a href="#" className="flex items-center gap-3 group focus:outline-none">
                 <img
-                  src="/logos/leoessential-vector-logo.svg"
+                  src={LOGO_VECTOR}
                   alt="Leoessential Insignia"
                   className="w-8 h-8 object-contain transition-transform duration-500 group-hover:scale-105"
                 />
