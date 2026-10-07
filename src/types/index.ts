@@ -62,3 +62,17 @@ export interface ClientReview {
   rating: number;
   serviceType: string;
 }
+
+export interface HeroSlide {
+  id: string;
+  category: string;
+  kicker: string;
+  headline: string;
+  highlightPhrase: string;
+  description: string;
+  imageUrl: string;
+  alt: string;
+  focalPoint?: string;
+  accentBadge?: string;
+}
+

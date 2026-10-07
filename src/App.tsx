@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { HeroCarousel } from './components/HeroCarousel';
 import {
   Calendar,
   Clock,
@@ -352,7 +353,7 @@ const RETAIL_PRODUCTS: RetailItem[] = [
       'Gentle enough for daily morning and night cleansing',
     ],
     usage: 'Dispense 1 pump onto closed lids, swirl gently using the Leoessential Cleansing Brush, and rinse with lukewarm water. Pat dry.',
-    image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80',
   },
   {
     id: 'retail-mask',
@@ -369,7 +370,7 @@ const RETAIL_PRODUCTS: RetailItem[] = [
       'Gentle snag-free elastic headband suitable for all hair types',
     ],
     usage: 'Wear every night over lash extensions to protect delicate fans from side-sleeping compression.',
-    image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=600&q=80',
   },
   {
     id: 'retail-brush',
@@ -386,7 +387,7 @@ const RETAIL_PRODUCTS: RetailItem[] = [
       'Includes hygienic protective travel cap',
     ],
     usage: 'Pair with the Leoessential Foaming Lash Cleanser in downward sweeping motions along the natural lash grain.',
-    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=600&q=80',
   },
   {
     id: 'retail-sealer',
@@ -403,7 +404,7 @@ const RETAIL_PRODUCTS: RetailItem[] = [
       'Applies effortlessly via a fine spiral wand',
     ],
     usage: 'Apply lightly to the base of extensions 2–3 times weekly after washing and drying your lashes.',
-    image: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1608248597359-bb5b6bbf2002?auto=format&fit=crop&w=600&q=80',
   },
 ];
 
@@ -643,124 +644,8 @@ export default function App() {
 
       <main className="flex-1">
         
-        {/* HERO SECTION */}
-        <section className="relative overflow-hidden border-b border-[#1C1917]/10 py-16 sm:py-24 lg:py-28">
-          {/* Subtle architectural grid pattern */}
-          <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#1C1917_1px,transparent_1px),linear-gradient(to_bottom,#1C1917_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
-
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-              
-              {/* Left Column: Editorial Statement */}
-              <div className="lg:col-span-7 space-y-6 sm:space-y-8 text-left">
-                
-                {/* Eyebrow kicker */}
-                <div className="inline-flex items-center gap-2.5 px-3 py-1 bg-[#EFE9DF] border border-[#C49A70]/30 text-[#1C1917]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#C49A70]" />
-                  <span className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[#1C1917]">
-                    Bespoke Lash & Brow Studio
-                  </span>
-                  <span className="text-[11px] text-[#7A7267] hidden sm:inline">· Directed by Adedoyin Elegunde</span>
-                </div>
-
-                {/* Main Heading with text-wrap balance */}
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-editorial font-light text-[#1C1917] leading-[1.12] tracking-tight max-w-2xl">
-                  Enhancing your natural beauty through <span className="italic font-normal text-[#C49A70]">intentional detail.</span>
-                </h1>
-
-                {/* Subtitle */}
-                <p className="text-base sm:text-lg text-[#7A7267] leading-relaxed max-w-xl font-normal">
-                  Customized lash extensions, semi-permanent brow artistry, and 1:1 professional masterclasses designed around precision, ocular health, and refined aesthetics.
-                </p>
-
-                {/* Dual CTAs */}
-                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
-                  <a
-                    href={SQUARE_BOOKING_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#C49A70] hover:bg-[#b0855c] text-white text-xs uppercase tracking-[0.15em] font-semibold transition-all shadow-sm active:scale-[0.99] text-center"
-                  >
-                    <span>Book via Square</span>
-                    <ArrowUpRight className="w-4 h-4" />
-                  </a>
-
-                  <a
-                    href="#services"
-                    className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-[#1C1917]/20 hover:border-[#1C1917] bg-transparent text-[#1C1917] text-xs uppercase tracking-[0.15em] font-medium transition-all text-center hover:bg-[#EFE9DF]/50"
-                  >
-                    <span>Explore Service Menu</span>
-                    <ChevronDown className="w-4 h-4 text-[#7A7267]" />
-                  </a>
-                </div>
-
-                {/* Trust metrics & quick stats banner */}
-                <div className="pt-6 sm:pt-10 border-t border-[#1C1917]/10 grid grid-cols-3 gap-4 sm:gap-6 text-left">
-                  <div>
-                    <div className="text-xs uppercase tracking-wider font-semibold text-[#1C1917]">1:1 Isolation</div>
-                    <div className="text-xs text-[#7A7267] mt-1 leading-snug">Zero follicle clumping</div>
-                  </div>
-                  <div>
-                    <div className="text-xs uppercase tracking-wider font-semibold text-[#1C1917]">Medical Hygiene</div>
-                    <div className="text-xs text-[#7A7267] mt-1 leading-snug">Autoclave & single-use</div>
-                  </div>
-                  <div>
-                    <div className="text-xs uppercase tracking-wider font-semibold text-[#1C1917]">Custom Mapping</div>
-                    <div className="text-xs text-[#7A7267] mt-1 leading-snug">Orbital bone tailored</div>
-                  </div>
-                </div>
-
-              </div>
-
-              {/* Right Column: Editorial Visual Showcase */}
-              <div className="lg:col-span-5 relative">
-                <div className="relative mx-auto max-w-md lg:max-w-none">
-                  
-                  {/* Decorative Frame border */}
-                  <div className="absolute -inset-3 border border-[#C49A70]/30 -rotate-1 pointer-events-none" />
-
-                  {/* Main Editorial Card */}
-                  <div className="relative bg-[#EFE9DF] border border-[#1C1917]/10 p-3 sm:p-4 shadow-xl">
-                    <div className="aspect-[4/5] relative overflow-hidden bg-[#FAF8F5]">
-                      <ImageWithFallback
-                        src="https://images.unsplash.com/photo-1583001931096-959e9a1a6223?auto=format&fit=crop&w=1200&q=80"
-                        alt="Macro lash artistry by Adedoyin Elegunde at Leoessential"
-                        fallbackLabel="Precision Lash Architecture"
-                        category="lash"
-                        className="w-full h-full object-cover"
-                      />
-
-                      {/* Floating Editorial Badge Overlay */}
-                      <div className="absolute bottom-4 left-4 right-4 bg-[#FAF8F5]/95 backdrop-blur-md p-4 border border-[#1C1917]/10 shadow-lg">
-                        <div className="flex items-center justify-between text-xs text-[#7A7267] mb-1">
-                          <span className="uppercase tracking-widest text-[10px] font-semibold text-[#C49A70]">Artist Spotlight</span>
-                          <span className="flex items-center gap-1.5 text-emerald-700">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
-                            Booking Open
-                          </span>
-                        </div>
-                        <div className="font-editorial text-lg text-[#1C1917] font-medium leading-snug">
-                          Adedoyin Elegunde
-                        </div>
-                        <div className="text-xs text-[#7A7267] mt-0.5">
-                          Lead Lash Artist & Cosmetic Tattoo Specialist
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Architectural footer line on card */}
-                    <div className="mt-3 flex items-center justify-between text-[11px] text-[#7A7267] px-1">
-                      <span>Refined Volume & Brow Microshading</span>
-                      <span className="font-mono text-[#1C1917]">Lagos Studio · By Appointment</span>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
+        {/* HERO EDITORIAL SHOWCASE CAROUSEL (LASHES & NAILS) */}
+        <HeroCarousel />
 
         {/* PHILOSOPHY & SAFETY PROTOCOL SECTION */}
         <section id="philosophy" className="py-20 sm:py-28 bg-[#FAF8F5] border-b border-[#1C1917]/10 scroll-mt-20">
