@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { HeroCarousel } from './components/HeroCarousel';
 import {
   Calendar,
@@ -55,12 +55,12 @@ function ImageWithFallback({ src, alt, className = "", fallbackLabel, category =
     return (
       <div className={`relative flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#EFE9DF] via-[#FAF8F5] to-[#E5DDD0] text-[#7A7267] p-6 text-center select-none ${className}`}>
         <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#C49A70_1px,transparent_1px)] [background-size:16px_16px]" />
-        <div className="w-12 h-12 rounded-full bg-[#C49A70]/15 flex items-center justify-center text-[#C49A70] mb-2 shadow-inner">
-          {category === 'lash' && <Eye className="w-6 h-6 stroke-[1.5]" />}
-          {category === 'brow' && <Sparkles className="w-6 h-6 stroke-[1.5]" />}
-          {category === 'training' && <GraduationCap className="w-6 h-6 stroke-[1.5]" />}
-          {category === 'product' && <ShoppingBag className="w-6 h-6 stroke-[1.5]" />}
-          {category === 'studio' && <ShieldCheck className="w-6 h-6 stroke-[1.5]" />}
+        <div className="w-12 h-12 rounded-full bg-[#FAF8F5] border border-[#C49A70]/30 flex items-center justify-center p-2 mb-2 shadow-sm">
+          <img
+            src="/logos/leoessential-vector-logo.svg"
+            alt="Leoessential"
+            className="w-full h-full object-contain"
+          />
         </div>
         <span className="font-editorial text-lg tracking-wide text-[#1C1917] font-medium">LEOESSENTIAL</span>
         <span className="text-xs uppercase tracking-widest text-[#7A7267] mt-0.5">{fallbackLabel || alt}</span>
@@ -486,6 +486,16 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [selectedServiceForModal, setSelectedServiceForModal] = useState<ServiceItem | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Track page scroll to dynamically adapt navbar blur & theme
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 40);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Quick toast banner notification
   const triggerToast = (msg: string) => {
@@ -534,39 +544,85 @@ export default function App() {
         </div>
       )}
 
-      {/* TOP BAR / NAVIGATION (Strict 3-zone contract) */}
-      <header className="sticky top-0 z-40 bg-[#FAF8F5]/90 backdrop-blur-md border-b border-[#1C1917]/8 transition-all">
+      {/* TOP BAR / NAVIGATION (Fixed in carousel with premium blur & persistent scroll position) */}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          isScrolled
+            ? 'glass-nav-scrolled text-[#1C1917]'
+            : 'glass-nav-top text-white'
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
-          {/* Zone 1: Single text element wordmark */}
+          {/* Zone 1: Luxury Monogram & Wordmark */}
           <a
             href="#"
-            className="text-2xl sm:text-3xl font-editorial tracking-[0.25em] font-semibold text-[#1C1917] hover:text-[#C49A70] transition-colors"
+            className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none shrink-0"
           >
-            LEOESSENTIAL
+            <img
+              src="/logos/leoessential-vector-logo.svg"
+              alt="Leoessential Insignia"
+              className="w-7 h-7 sm:w-8 sm:h-8 object-contain transition-transform duration-500 group-hover:scale-105"
+            />
+            <span
+              className={`text-xl sm:text-2xl font-editorial tracking-[0.2em] sm:tracking-[0.25em] font-semibold transition-colors ${
+                isScrolled ? 'text-[#1C1917] group-hover:text-[#C49A70]' : 'text-[#FAF8F5] group-hover:text-[#C49A70]'
+              }`}
+            >
+              LEOESSENTIAL
+            </span>
           </a>
 
           {/* Zone 2: 4–6 clean text navigation links */}
-          <nav className="hidden md:flex items-center gap-8 text-xs lg:text-sm tracking-wider uppercase font-medium text-[#7A7267]">
-            <a href="#services" className="hover:text-[#1C1917] transition-colors">
+          <nav
+            className={`hidden lg:flex items-center gap-6 xl:gap-8 text-xs lg:text-sm tracking-wider uppercase font-medium transition-colors ${
+              isScrolled ? 'text-[#7A7267]' : 'text-white/80'
+            }`}
+          >
+            <a
+              href="#services"
+              className={`transition-colors ${
+                isScrolled ? 'hover:text-[#1C1917]' : 'hover:text-white'
+              }`}
+            >
               Services
             </a>
-            <a href="#philosophy" className="hover:text-[#1C1917] transition-colors">
+            <a
+              href="#philosophy"
+              className={`transition-colors ${
+                isScrolled ? 'hover:text-[#1C1917]' : 'hover:text-white'
+              }`}
+            >
               Philosophy
             </a>
-            <a href="#training" className="hover:text-[#1C1917] transition-colors">
+            <a
+              href="#training"
+              className={`transition-colors ${
+                isScrolled ? 'hover:text-[#1C1917]' : 'hover:text-white'
+              }`}
+            >
               Training
             </a>
-            <a href="#policies" className="hover:text-[#1C1917] transition-colors">
+            <a
+              href="#policies"
+              className={`transition-colors ${
+                isScrolled ? 'hover:text-[#1C1917]' : 'hover:text-white'
+              }`}
+            >
               Policies
             </a>
-            <a href="#contact" className="hover:text-[#1C1917] transition-colors">
+            <a
+              href="#contact"
+              className={`transition-colors ${
+                isScrolled ? 'hover:text-[#1C1917]' : 'hover:text-white'
+              }`}
+            >
               Contact
             </a>
           </nav>
 
           {/* Zone 3: 1–2 primary actions */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 shrink-0">
             <a
               href={SQUARE_BOOKING_URL}
               target="_blank"
@@ -580,7 +636,9 @@ export default function App() {
             {/* Mobile Hamburger toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-[#1C1917] hover:text-[#C49A70] focus:outline-none"
+              className={`lg:hidden p-2 focus:outline-none transition-colors ${
+                isScrolled ? 'text-[#1C1917] hover:text-[#C49A70]' : 'text-white hover:text-[#C49A70]'
+              }`}
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -590,40 +648,80 @@ export default function App() {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-b border-[#1C1917]/10 bg-[#FAF8F5] px-6 py-6 space-y-4 text-center">
-            <div className="flex flex-col space-y-3 uppercase tracking-widest text-xs font-medium text-[#7A7267]">
+          <div
+            className={`lg:hidden border-b px-6 py-6 space-y-4 text-center transition-all ${
+              isScrolled
+                ? 'border-[#1C1917]/10 bg-[#FAF8F5]/98 backdrop-blur-xl text-[#1C1917]'
+                : 'border-white/10 bg-[#1C1917]/95 backdrop-blur-xl text-white'
+            }`}
+          >
+            {/* Brand Monogram in Mobile Drawer */}
+            <div className="flex items-center justify-center gap-2.5 pb-3 border-b border-inherit">
+              <img
+                src="/logos/leoessential-vector-logo.svg"
+                alt="Leoessential Insignia"
+                className="w-7 h-7 object-contain"
+              />
+              <span className="font-editorial text-xl tracking-[0.2em] font-semibold">
+                LEOESSENTIAL
+              </span>
+            </div>
+
+            <div
+              className={`flex flex-col space-y-3 uppercase tracking-widest text-xs font-medium ${
+                isScrolled ? 'text-[#7A7267]' : 'text-white/80'
+              }`}
+            >
               <a
                 href="#services"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 hover:text-[#1C1917] border-b border-[#EFE9DF]"
+                className={`py-2 border-b ${
+                  isScrolled
+                    ? 'hover:text-[#1C1917] border-[#EFE9DF]'
+                    : 'hover:text-white border-white/10'
+                }`}
               >
                 Services Menu
               </a>
               <a
                 href="#philosophy"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 hover:text-[#1C1917] border-b border-[#EFE9DF]"
+                className={`py-2 border-b ${
+                  isScrolled
+                    ? 'hover:text-[#1C1917] border-[#EFE9DF]'
+                    : 'hover:text-white border-white/10'
+                }`}
               >
                 Philosophy & Hygiene
               </a>
               <a
                 href="#training"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 hover:text-[#1C1917] border-b border-[#EFE9DF]"
+                className={`py-2 border-b ${
+                  isScrolled
+                    ? 'hover:text-[#1C1917] border-[#EFE9DF]'
+                    : 'hover:text-white border-white/10'
+                }`}
               >
                 1:1 Training Academy
               </a>
               <a
                 href="#policies"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 hover:text-[#1C1917] border-b border-[#EFE9DF]"
+                className={`py-2 border-b ${
+                  isScrolled
+                    ? 'hover:text-[#1C1917] border-[#EFE9DF]'
+                    : 'hover:text-white border-white/10'
+                }`}
               >
                 Studio Policies
               </a>
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 hover:text-[#1C1917]"
+                className={`py-2 ${
+                  isScrolled ? 'hover:text-[#1C1917]' : 'hover:text-white'
+                }`}
               >
                 Contact & Studio Info
               </a>
@@ -644,7 +742,7 @@ export default function App() {
 
       <main className="flex-1">
         
-        {/* HERO EDITORIAL SHOWCASE CAROUSEL (LASHES & NAILS) */}
+        {/* HERO EDITORIAL SHOWCASE CAROUSEL (BESPOKE LASH ARTISTRY) */}
         <HeroCarousel />
 
         {/* PHILOSOPHY & SAFETY PROTOCOL SECTION */}
@@ -722,10 +820,26 @@ export default function App() {
 
             {/* Editorial Quote Box */}
             <div className="mt-12 bg-[#EFE9DF] border border-[#C49A70]/30 p-8 sm:p-12 relative overflow-hidden">
+              {/* Background watermark seal */}
+              <div className="absolute right-[-20px] sm:right-6 -bottom-10 sm:-bottom-12 opacity-[0.07] pointer-events-none select-none">
+                <img
+                  src="/logos/leoessential-vector-logo.svg"
+                  alt=""
+                  className="w-56 h-56 sm:w-72 sm:h-72 object-contain"
+                />
+              </div>
+
               <div className="max-w-3xl space-y-4 relative z-10">
-                <span className="text-xs uppercase tracking-[0.2em] font-semibold text-[#C49A70]">
-                  From The Founder & Artist
-                </span>
+                <div className="flex items-center gap-2">
+                  <img
+                    src="/logos/leoessential-vector-logo.svg"
+                    alt="Leoessential Emblem"
+                    className="w-4 h-4 object-contain"
+                  />
+                  <span className="text-xs uppercase tracking-[0.2em] font-semibold text-[#C49A70]">
+                    From The Founder & Master Artist
+                  </span>
+                </div>
                 <blockquote className="font-editorial text-2xl sm:text-3xl font-light text-[#1C1917] italic leading-snug">
                   "Lash artistry is an architectural practice. When we honor the millimeter and respect the follicle, the result is effortless elegance that feels like your own."
                 </blockquote>
@@ -1102,9 +1216,16 @@ export default function App() {
                   </div>
 
                   <div className="space-y-3">
-                    <h4 className="font-editorial text-2xl text-[#1C1917] font-medium">
-                      What Every Student Receives
-                    </h4>
+                    <div className="flex items-center justify-between">
+                      <h4 className="font-editorial text-2xl text-[#1C1917] font-medium">
+                        What Every Student Receives
+                      </h4>
+                      <img
+                        src="/logos/leoessential-vector-logo.svg"
+                        alt="Accredited Leoessential Certificate"
+                        className="w-7 h-7 object-contain opacity-90"
+                      />
+                    </div>
                     <ul className="space-y-2 text-xs text-[#7A7267]">
                       <li className="flex items-center gap-2">
                         <Check className="w-3.5 h-3.5 text-[#C49A70] shrink-0" />
@@ -1500,9 +1621,16 @@ export default function App() {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-10 border-b border-[#1C1917]/10">
             
             {/* Brand column */}
-            <div className="space-y-2">
-              <a href="#" className="font-editorial text-2xl font-semibold tracking-[0.25em] text-[#1C1917] block">
-                LEOESSENTIAL
+            <div className="space-y-3">
+              <a href="#" className="flex items-center gap-3 group focus:outline-none">
+                <img
+                  src="/logos/leoessential-vector-logo.svg"
+                  alt="Leoessential Insignia"
+                  className="w-8 h-8 object-contain transition-transform duration-500 group-hover:scale-105"
+                />
+                <span className="font-editorial text-2xl font-semibold tracking-[0.25em] text-[#1C1917] group-hover:text-[#C49A70] transition-colors">
+                  LEOESSENTIAL
+                </span>
               </a>
               <p className="text-xs text-[#7A7267] max-w-sm">
                 Owned and artistically directed by Adedoyin Elegunde. Bespoke lash architecture, semi-permanent brow artistry, and professional mentorship.

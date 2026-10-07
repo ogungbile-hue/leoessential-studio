@@ -107,7 +107,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onExploreClick }) =>
   return (
     <section
       aria-label="Editorial Showcase Hero"
-      className="relative flex-grow flex items-center justify-center min-h-[92vh] lg:min-h-screen w-full p-3 sm:p-5 md:p-8 pt-24 md:pt-28 select-none overflow-hidden bg-[#FAF8F5]"
+      className="relative flex-grow flex items-center justify-center min-h-screen w-full select-none overflow-hidden bg-[#FAF8F5]"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onKeyDown={handleKeyDown}
@@ -118,14 +118,13 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onExploreClick }) =>
     >
       {/* 
         CINEMATIC FLOATING INSET CANVAS 
-        Exact Bidelat Couture architectural width & margin:
-        absolute inset-4 md:inset-8 mt-20 md:mt-24 rounded-2xl md:rounded-3xl overflow-hidden
+        Extending to top-0 so the frosted glass top navbar floats directly inside the image carousel:
       */}
-      <div className="absolute inset-3 sm:inset-5 md:inset-8 mt-20 sm:mt-24 rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl bg-[#1C1917]">
+      <div className="absolute inset-x-0 top-0 bottom-4 sm:bottom-6 md:bottom-8 rounded-b-2xl md:rounded-b-3xl overflow-hidden shadow-2xl bg-[#1C1917]">
         
-        {/* Cinematic dark luxury gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917]/95 via-[#1C1917]/30 to-[#1C1917]/55 z-10 pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(28,25,23,0.45)_100%)] z-10 pointer-events-none" />
+        {/* Cinematic dark luxury gradient overlay - translucent at top so image shines through glass navbar */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917]/95 via-[#1C1917]/20 to-black/20 z-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(28,25,23,0.35)_100%)] z-10 pointer-events-none" />
 
         {/* 
           ANIMATION ENGINE:
@@ -152,18 +151,18 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onExploreClick }) =>
 
       {/* 
         CENTERED EDITORIAL CONTENT OVERLAY:
-        Matching Bidelat Couture's centered composition with luxury typography
+        Offset with pt-24/pt-28 so it breathes beneath the floating blurred navbar
       */}
-      <div className="relative z-20 flex flex-col items-center text-center max-w-4xl px-4 sm:px-6 my-auto mt-20 sm:mt-24 md:mt-16">
+      <div className="relative z-20 flex flex-col items-center text-center max-w-4xl px-4 sm:px-6 my-auto pt-24 sm:pt-28 md:pt-24 pb-12 sm:pb-16">
         
         {/* Category kicker with ultra-wide tracking */}
-        <span className="text-[10px] sm:text-xs uppercase tracking-[0.45em] sm:tracking-[0.55em] mb-4 sm:mb-6 text-[#C49A70] font-semibold drop-shadow-sm flex items-center gap-2">
+        <span className="text-[10px] sm:text-xs uppercase tracking-[0.45em] sm:tracking-[0.55em] mb-3 sm:mb-4 text-[#C49A70] font-semibold drop-shadow-sm flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-[#C49A70] animate-pulse" />
           <span>{currentSlide.category}</span>
         </span>
 
         {/* Grand editorial serif heading with line break and italic accent */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] font-editorial mb-6 sm:mb-8 leading-[1.08] text-[#FAF8F5] drop-shadow-md tracking-tight">
+        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[4.75rem] font-editorial mb-4 sm:mb-6 leading-[1.08] text-[#FAF8F5] drop-shadow-md tracking-tight">
           {currentSlide.headline}{' '}
           <br className="hidden sm:inline" />
           <span className="italic font-light text-[#EFE9DF]">
@@ -172,7 +171,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onExploreClick }) =>
         </h1>
 
         {/* Narrative description */}
-        <p className="text-xs sm:text-sm md:text-base text-[#FAF8F5]/85 max-w-2xl mb-8 sm:mb-10 leading-relaxed font-normal drop-shadow-sm px-2">
+        <p className="text-xs sm:text-sm md:text-base text-[#FAF8F5]/85 max-w-2xl mb-6 sm:mb-8 leading-relaxed font-normal drop-shadow-sm px-2">
           {currentSlide.description}
         </p>
 
@@ -209,10 +208,9 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onExploreClick }) =>
 
       {/* 
         VERTICAL NAVIGATION LINE INDICATORS ON RIGHT:
-        Signature Bidelat Couture vertical selector
-        absolute right-8 md:right-16 top-1/2 -translate-y-1/2
+        Visible on tablet and desktop (hidden on mobile to keep editorial text spacious and touch-friendly)
       */}
-      <div className="absolute right-4 sm:right-7 md:right-12 top-1/2 -translate-y-1/2 flex flex-col gap-2 md:gap-3 z-20">
+      <div className="absolute right-4 sm:right-7 md:right-12 top-1/2 -translate-y-1/2 hidden sm:flex flex-col gap-2 md:gap-3 z-20">
         {HERO_SLIDES.map((slide, u) => {
           const isActive = u === currentIndex;
           return (
@@ -240,7 +238,12 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onExploreClick }) =>
         Bottom-right: Numerical counter & arrow controls
       */}
       <div className="absolute bottom-6 sm:bottom-10 left-6 sm:left-12 z-20 hidden sm:flex items-center gap-3 text-white/80">
-        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+        <img
+          src="/logos/leoessential-vector-logo.svg"
+          alt="Leoessential Insignia"
+          className="w-5 h-5 object-contain"
+        />
+        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
         <span className="text-[11px] uppercase font-mono tracking-widest text-[#EFE9DF]">
           Lagos Studio Sanctuary · By Appointment
         </span>

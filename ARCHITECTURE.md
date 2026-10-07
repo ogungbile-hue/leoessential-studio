@@ -2,10 +2,12 @@
 
 ## 1. Architectural Overview & Design Philosophy
 
-Leoessential is built as a high-performance, responsive React single-page application (SPA) with Vite and Tailwind CSS. The architecture prioritizes:
-- **Instantaneous Page Loads & Zero Bloat:** Minimal runtime overhead, clean semantic markup, and optimized media containers.
-- **Strict Separation of Concerns:** Service tiers, policies, product data, and studio metadata are abstracted into strongly-typed TypeScript data modules.
-- **Progressive Disclosure:** Complex treatments, refill eligibility criteria, and training curricula are revealed through frictionless modal views, interactive tabs, and accordions.
+Leoessential is built as a high-performance, responsive React single-page application (SPA) with Vite, Tailwind CSS, and Motion. The application serves as the digital flagship for **Leoessential**, a high-end studio specializing exclusively in bespoke lash extensions and accredited 1:1 professional lash mentorship.
+
+### Core Architectural Mandates:
+- **Exclusive Lash Specialization:** The architecture and data schemas are strictly tailored to bespoke lash extension styling, follicle health preservation, refills, and lash academy mentorship. **Nail services are strictly excluded.**
+- **Instantaneous Page Loads & Zero Bloat:** Minimal runtime overhead, clean semantic markup, and optimized media containers with cross-browser backdrop blur.
+- **Strict Separation of Concerns:** Lash service tiers, policies, product data, and studio metadata are abstracted into strongly-typed TypeScript data modules.
 - **Frictionless Booking Handoff:** Direct integration hooks into **Square Appointments** with pre-configured parameters, complemented by instant WhatsApp concierge routing.
 
 ---
@@ -14,62 +16,35 @@ Leoessential is built as a high-performance, responsive React single-page applic
 
 ```
 leoessential-studio/
-├── CONTEXT.md                  # Business overview, target personas, operational rules
+├── CONTEXT.md                  # Business overview, target personas, operational rules (Lash Focus)
 ├── ARCHITECTURE.md             # System design, component hierarchy, integration hooks
 ├── DESIGN_SYSTEM.md            # Palette tokens, typography, spacing, UI patterns
 ├── package.json                # Project dependencies and npm scripts
 ├── tsconfig.json               # TypeScript compiler options
 ├── vite.config.ts              # Vite bundle configuration
-├── index.html                  # HTML entrypoint with preconnected fonts & meta tags
+├── index.html                  # HTML entrypoint with preconnected fonts & brand favicon
+├── public/
+│   └── logos/                  # Static brand assets (vector SVG, PNG, icons)
+│       ├── leoessential-vector-logo.svg
+│       └── leoessential-png-logo.png
 └── src/
     ├── main.tsx                # React DOM root entry
     ├── index.css               # Core CSS, font declarations, glassmorphism utilities
     ├── types/                  # Core domain TypeScript interfaces
-    │   ├── service.ts          # ServiceItem, ServiceCategory, RefillRule
-    │   ├── product.ts          # RetailProduct, RetailCategory
-    │   ├── policy.ts           # StudioPolicy, SeverityLevel
-    │   └── academy.ts          # AcademyCourse, SyllabusItem
+    │   ├── index.ts            # HeroSlide, ServiceItem, RetailItem, PolicyItem
     ├── data/                   # Decoupled content & pricing matrices
-    │   ├── studio.ts           # Contact constants, social links, opening hours
-    │   ├── services.ts         # Lashes & brows menu with dual NGN/USD pricing
-    │   ├── products.ts         # In-studio pickup retail catalog items
+    │   ├── studio.ts           # Contact constants, social links, logo references
+    │   ├── carousel.ts         # High-resolution lash editorial showcase slides
+    │   ├── services.ts         # Lash extension menu with dual NGN/USD pricing
+    │   ├── products.ts         # In-studio lash aftercare retail catalog items
     │   ├── policies.ts         # 6 core studio policies with full details
-    │   └── academy.ts          # 1:1 masterclass tiers & kit inclusions
+    │   ├── academy.ts          # 1:1 lash masterclass tiers & kit inclusions
+    │   └── reviews.ts          # Verified client testimonials & graduate reviews
     ├── components/
-    │   ├── layout/
-    │   │   ├── Header.tsx             # 3-zone sticky navigation with currency toggle
-    │   │   ├── MobileDrawer.tsx       # Slide-over navigation menu
-    │   │   ├── MobileStickyBar.tsx    # Bottom quick-action bar with safe-area padding
-    │   │   └── Footer.tsx             # Studio credentials, legal, and social links
-    │   ├── common/
-    │   │   ├── CurrencyToggle.tsx     # NGN / USD switcher
-    │   │   ├── ImageWithSkeleton.tsx  # Blur-up placeholder & category fallback badge
-    │   │   ├── Toast.tsx              # Transient feedback for copy/form events
-    │   │   └── Modal.tsx              # Accessible dialog with ESC listener & focus lock
-    │   ├── hero/
-    │   │   ├── HeroSection.tsx        # Editorial headline, dual CTAs, trust metrics
-    │   │   └── FeatureStrip.tsx       # 3 core studio disciplines & hygiene badges
-    │   ├── services/
-    │   │   ├── ServiceCatalog.tsx     # Tabbed service browser (Lashes, Brows, Academy, Retail)
-    │   │   ├── ServiceCard.tsx        # High-density service card with price & duration
-    │   │   ├── ServiceModal.tsx       # Detailed treatment breakdown & prep rules
-    │   │   └── StyleFinderQuiz.tsx    # Interactive 3-step recommendation tool
-    │   ├── academy/
-    │   │   ├── AcademySection.tsx     # Mentorship overview & live model syllabus
-    │   │   ├── StudentKitCard.tsx     # Physical kit breakdown (tweezers, glue, tiles)
-    │   │   └── EnrollmentModal.tsx    # Lead-capture intake modal with direct routing
-    │   ├── retail/
-    │   │   ├── RetailGrid.tsx         # In-studio pickup showcase
-    │   │   └── ReserveModal.tsx       # 1-click WhatsApp reserve generator
-    │   ├── policies/
-    │   │   └── PoliciesAccordion.tsx  # Interactive policy disclosures
-    │   ├── reviews/
-    │   │   └── Testimonials.tsx       # Verified client experiences & graduate reviews
-    │   └── contact/
-    │       ├── ContactMatrix.tsx      # Phone, WhatsApp, Email, Instagram direct links
-    │       ├── OperatingHours.tsx     # Weekly schedule with VIP Sunday notice
-    │       └── SquareBookingCard.tsx  # Prominent reservation anchor with checklist
-    └── App.tsx                 # Root application assembling layout and sections
+    │   └── HeroCarousel.tsx    # Cinematic full-bleed lash carousel with fixed frosted navbar
+    ├── utils/
+    │   └── currency.ts         # Dual NGN/USD currency utilities
+    └── App.tsx                 # Root application assembling layout, navigation, and sections
 ```
 
 ---
@@ -78,27 +53,24 @@ leoessential-studio/
 
 ```mermaid
 graph TD
-    App[App Container] --> Header[Header / Sticky Navigation]
-    App --> MobileDrawer[Mobile Navigation Drawer]
-    App --> Hero[Hero Section & Editorial Frame]
-    App --> FeatureStrip[Feature Discipline Strip]
-    App --> StyleFinder[Style Finder Quiz Tool]
-    App --> Philosophy[01. Philosophy & Hygiene Charter]
-    App --> Services[02. Service & Treatment Catalog]
-    App --> Academy[03. 1:1 Mentorship Academy]
-    App --> Policies[04. Studio Policies & Boundaries]
-    App --> Testimonials[Client Praise & Social Proof]
-    App --> Contact[05. Connect & Instant Reservation]
-    App --> Footer[Footer]
-    App --> MobileSticky[Mobile Sticky Action Bar]
-    App --> ServiceModal[Service Detail Modal]
-    App --> ReserveModal[Retail Reserve Modal]
+    App[App Container] --> Header[Fixed Frosted Header / Navigation]
+    App --> MobileDrawer[Mobile Navigation Drawer with Monogram]
+    App --> HeroCarousel[Hero Editorial Lash Showcase Carousel]
+    App --> Philosophy[01. Philosophy & Safety Charter + Founder Card]
+    App --> Services[02. Curated Lash Menu & Retail Catalog]
+    App --> Academy[03. 1:1 Professional Lash Academy]
+    App --> Policies[04. Studio Policies & Boundaries Accordion]
+    App --> Testimonials[Client Praise & Verified Reviews]
+    App --> Contact[05. Connect & Instant Square Reservation]
+    App --> Footer[Footer with Brand Insignia]
+    App --> MobileSticky[Mobile Quick-Action Booking Bar]
+    App --> ServiceModal[Lash Treatment Detail Modal]
     App --> Toast[Toast Notification]
 
-    Services --> ServiceCard
-    Services --> RetailGrid
-    Academy --> StudentKitCard
-    Policies --> PoliciesAccordion
+    Services --> ServiceCards[Lash Treatment Cards]
+    Services --> RetailGrid[Lash Aftercare Retail Items]
+    Academy --> KitCard[Accredited Student Kit Card]
+    Policies --> AccordionItems[Policy Accordion Disclosures]
 ```
 
 ---
@@ -109,11 +81,10 @@ The application maintains a centralized, reactive local state using React hooks:
 
 | State Variable | Type | Purpose |
 |---|---|---|
-| `currency` | `'NGN' \| 'USD'` | Toggles dynamic price formatting throughout the entire site |
-| `activeCategory` | `'lashes' \| 'brows' \| 'training' \| 'retail'` | Controls active tab in the catalog |
-| `selectedService` | `ServiceItem \| null` | Controls treatment detail modal state |
-| `selectedProduct` | `RetailProduct \| null` | Controls retail reservation drawer state |
-| `openPolicyId` | `number \| null` | Tracks currently expanded policy accordion |
+| `isScrolled` | `boolean` | Dynamically adapts header frosted glass from carousel overlay to page scroll |
+| `activeTab` | `'lashes' \| 'brows' \| 'training' \| 'retail'` | Controls active tab in the catalog |
+| `selectedServiceForModal` | `ServiceItem \| null` | Controls treatment detail modal state |
+| `openPolicyId` | `number \| null` | Tracks currently expanded policy accordion item |
 | `mobileMenuOpen` | `boolean` | Controls mobile slide-over drawer visibility |
 | `toastMessage` | `string \| null` | Global toast notification text |
 
@@ -124,15 +95,15 @@ The application maintains a centralized, reactive local state using React hooks:
 ### A. Square Appointments
 - **Target URL:** `https://square.site/book/leoessential`
 - **Behavior:** All booking buttons trigger new-tab navigation with security attributes (`rel="noopener noreferrer"`).
-- **Service Deep Parameters:** Service cards append category parameters or service intent where supported to streamline appointment selection.
+- **Primary CTAs:** Floating hero segmented pill, fixed navigation bar, and bottom mobile bar.
 
 ### B. WhatsApp Concierge Pipeline
 - **Target URL:** `https://wa.me/2348145356053`
 - **Dynamic Pre-Filled Inquiries:**
-  - *Academy Mentorship:* `Hi Adedoyin, I would like to apply for the Leoessential 1:1 Masterclass. Could you share upcoming cohort dates?`
-  - *Retail Reservation:* `Hi Adedoyin, I would like to reserve [Product Name] for in-studio pickup during my upcoming appointment.`
-  - *General Inquiry:* Direct link with polite greeting.
+  - *Academy Mentorship:* `Hi Adedoyin, I would like to apply for the Leoessential 1:1 Lash Masterclass. Could you share upcoming cohort dates?`
+  - *Lash Aftercare Retail Reservation:* `Hi Adedoyin, I would like to reserve [Product Name] for in-studio pickup during my upcoming appointment.`
+  - *Direct Advisory:* Direct link with polite greeting.
 
 ### C. Instagram Direct Link
 - **Target URL:** `https://instagram.com/Leo_essential` (`@Leo_essential`)
-- Displays real-time social proof and visual set demonstrations.
+- Displays real-time portfolio, lash map breakdowns, and studio sanctuary atmosphere.

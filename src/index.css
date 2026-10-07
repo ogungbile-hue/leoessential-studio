@@ -55,6 +55,21 @@
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
+.glass-nav-top {
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  background: rgba(28, 25, 23, 0.32);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-nav-scrolled {
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  background: rgba(250, 248, 245, 0.88);
+  border-bottom: 1px solid rgba(28, 25, 23, 0.08);
+  box-shadow: 0 4px 24px -2px rgba(28, 25, 23, 0.06);
+}
+
 @keyframes progress {
   from {
     width: 0%;
