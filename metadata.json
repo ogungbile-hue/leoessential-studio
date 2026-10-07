@@ -1,0 +1,6 @@
+{
+  "name": "Leoessential | Bespoke Lash & Brow Studio",
+  "description": "Leoessential by Adedoyin Elegunde. Premium lash extensions, semi-permanent brow artistry, and 1:1 masterclasses crafted with intentional detail and ocular health.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
