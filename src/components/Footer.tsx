@@ -22,7 +22,7 @@ export const Footer: React.FC = () => {
               </span>
             </Link>
             <p className="text-xs text-[#EFE9DF]/70 max-w-sm leading-relaxed">
-              Founded and artistically directed by Adedoyin Elegunde. Bespoke lash architecture, semi-permanent brow artistry, and accredited 1:1 professional masterclasses in Lagos.
+              Founded and artistically directed by Adedoyin Elegunde. Bespoke lash architecture, semi-permanent brow artistry, and accredited 1:1 professional masterclasses in Ibadan, Oyo State.
             </p>
             <div className="text-[11px] font-mono text-[#C49A70]">
               Enhancing your natural beauty through intentional detail.
@@ -116,7 +116,7 @@ export const Footer: React.FC = () => {
 
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#EFE9DF]/60">
           <span>© {new Date().getFullYear()} Leoessential Studio & Academy. All Rights Reserved.</span>
-          <span className="font-mono text-[11px]">Private Sanctuary · Lagos, Nigeria</span>
+          <span className="font-mono text-[11px]">Private Sanctuary · Ibadan, Oyo State, Nigeria</span>
         </div>
       </div>
     </footer>

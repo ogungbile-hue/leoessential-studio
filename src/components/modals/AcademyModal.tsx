@@ -287,7 +287,7 @@ export const AcademyModal: React.FC<AcademyModalProps> = ({ isOpen, onClose }) =
                       Mentorship Location
                     </span>
                     <span className="font-medium">
-                      Leoessential Private Studio, Lagos, Nigeria
+                      Leoessential Private Studio, Ibadan, Oyo State, Nigeria
                     </span>
                   </div>
                 </div>

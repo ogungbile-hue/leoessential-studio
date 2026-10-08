@@ -29,7 +29,7 @@ export const SanctuaryPage: React.FC = () => {
             </span>
             <span className="w-6 h-px bg-[#C49A70]" />
             <span className="text-xs uppercase tracking-wider text-[#7A7267]">
-              Lagos, Nigeria
+              Ibadan, Oyo State
             </span>
           </div>
 
@@ -124,7 +124,7 @@ export const SanctuaryPage: React.FC = () => {
                   Private Sanctuary Location & Diary Hours
                 </span>
                 <h3 className="font-editorial text-3xl font-semibold text-[#1C1917]">
-                  Lagos, Nigeria (By Appointment Only)
+                  Ibadan, Oyo State (By Appointment Only)
                 </h3>
                 <p className="text-xs text-[#7A7267] max-w-lg leading-relaxed">
                   Exact sanctuary address directions are dispatched via WhatsApp following your Paystack deposit confirmation.

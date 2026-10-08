@@ -113,7 +113,7 @@ export const HomePage: React.FC = () => {
                     Unhurried Sessions
                   </div>
                   <p className="text-xs text-[#7A7267] leading-relaxed">
-                    A private sanctuary in Lagos with generous consultation time tailored uniquely to your orbital bone.
+                    A private sanctuary in Ibadan, Oyo State with generous consultation time tailored uniquely to your orbital bone.
                   </p>
                 </div>
               </div>
@@ -459,7 +459,7 @@ export const HomePage: React.FC = () => {
           <div className="pt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-[#7A7267] font-mono">
             <div className="flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5 text-[#C49A70]" />
-              <span>Lagos, Nigeria (Private Studio Sanctuary)</span>
+              <span>Ibadan, Oyo State, Nigeria (Private Studio Sanctuary)</span>
             </div>
             <div className="flex items-center gap-1.5">
               <Clock className="w-3.5 h-3.5 text-[#C49A70]" />

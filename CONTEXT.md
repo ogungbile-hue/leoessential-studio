@@ -1,7 +1,7 @@
 # Leoessential Studio & Academy — Business & Repository Context
 
 ## 1. Executive Summary & Brand Foundation
-**Leoessential** is a premier bespoke lash extension studio and accredited professional lash training academy based in Lagos, Nigeria. Founded and artistically directed by master lash artist **Adedoyin Elegunde**, Leoessential occupies the intersection of architectural precision, ocular health science, and quiet luxury.
+**Leoessential** is a premier bespoke lash extension studio and accredited professional lash training academy based in Ibadan, Oyo State, Nigeria. Founded and artistically directed by master lash artist **Adedoyin Elegunde**, Leoessential occupies the intersection of architectural precision, ocular health science, and quiet luxury.
 
 > **CRITICAL DIRECTIVE ON STUDIO SCOPE:**  
 > Leoessential **specializes exclusively in high-end lash extensions, follicular preservation, and professional 1:1 lash mentorship**. The studio **strictly does NOT provide nail services**. All brand messaging, imagery, visual showcases, and operational menus are dedicated entirely to bespoke lash artistry and lash health.
@@ -48,7 +48,7 @@ Exclusive, ophthalmologist-tested post-procedure aftercare formulated for lash w
 2. **The Bridal & Special Occasion Client:**
    Demands foolproof retention, camera-ready texture, and zero ocular irritation or redness.
 3. **The Discerning Diaspora Visitor:**
-   Nigerian diaspora visiting Lagos for vacations or holidays seeking international-standard lash isolation, flexible NGN/USD pricing clarity, and seamless online booking.
+   Nigerian diaspora visiting Ibadan / Oyo State for vacations, weddings, or family visits seeking international-standard lash isolation, flexible NGN/USD pricing clarity, and seamless online booking.
 4. **The Aspiring Lash Artist & Entrepreneur:**
    Wants rigorous 1:1 mentorship from Adedoyin to master real technique, adhesive chemistry, and business infrastructure rather than superficial group seminars.
 

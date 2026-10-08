@@ -16,7 +16,7 @@ export const STUDIO_CONFIG = {
   standardLashDepositNgn: 15000,
   standardBrowDepositNgn: 20000,
   academyTuitionDepositNgn: 50000,
-  location: "Lagos, Nigeria (Private Studio Sanctuary — By Appointment)",
+  location: "Ibadan, Oyo State, Nigeria (Private Studio Sanctuary — By Appointment)",
   logoVector: `${import.meta.env.BASE_URL}logos/leoessential-vector-logo.svg`,
   logoPng: `${import.meta.env.BASE_URL}logos/leoessential-png-logo.png`,
   hours: [

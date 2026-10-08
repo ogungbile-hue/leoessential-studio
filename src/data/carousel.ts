@@ -40,7 +40,7 @@ export const HERO_SLIDES: HeroSlide[] = [
   {
     id: 'slide-lash-editorial',
     category: 'Signature Sets — Textured Kim-K Spikes',
-    kicker: 'Editorial Aesthetics · Lagos Studio Sanctuary',
+    kicker: 'Editorial Aesthetics · Ibadan Studio Sanctuary',
     headline: 'Multi-dimensional contour sculpted with',
     highlightPhrase: 'unhurried precision.',
     description: 'Handcrafted bouquet fans staggered with delicate peak spikes to open the eye contour and deliver a velvety, head-turning gaze.',
@@ -52,7 +52,7 @@ export const HERO_SLIDES: HeroSlide[] = [
   {
     id: 'slide-lash-sanctuary',
     category: 'Sanctuary Experience — Restorative Care',
-    kicker: 'Private Lagos Studio · Unhurried Appointments',
+    kicker: 'Private Ibadan Studio · Unhurried Appointments',
     headline: 'A restorative beauty ritual honoring your',
     highlightPhrase: 'natural lash health.',
     description: 'Zero rushing, clinical autoclave sterilization, ergonomic memory-foam suites, and medical-grade ocular care designed for discerning executives and brides.',

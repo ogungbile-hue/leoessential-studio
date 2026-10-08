@@ -157,7 +157,7 @@ export const AcademyPage: React.FC = () => {
           </h1>
 
           <p className="text-sm sm:text-base text-[#7A7267] leading-relaxed">
-            An uncompromising, hands-on masterclass led directly by Adedoyin Elegunde in our private Lagos studio. Strictly limited to 2 students per month to guarantee undivided mentor attention.
+            An uncompromising, hands-on masterclass led directly by Adedoyin Elegunde in our private Ibadan studio. Strictly limited to 2 students per month to guarantee undivided mentor attention.
           </p>
         </div>
 
@@ -238,7 +238,7 @@ export const AcademyPage: React.FC = () => {
                   <span className="text-[10px] uppercase font-mono text-[#7A7267] block">
                     Mentorship Location
                   </span>
-                  <span className="font-medium">Private Studio Sanctuary, Lagos, Nigeria</span>
+                  <span className="font-medium">Private Studio Sanctuary, Ibadan, Oyo State, Nigeria</span>
                 </div>
               </div>
 

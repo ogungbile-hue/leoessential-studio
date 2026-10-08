@@ -247,7 +247,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onExploreClick, onBo
         />
         <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
         <span className="text-[11px] uppercase font-mono tracking-widest text-[#EFE9DF]">
-          Lagos Studio Sanctuary · By Appointment
+          Ibadan Studio Sanctuary · By Appointment
         </span>
       </div>
 
