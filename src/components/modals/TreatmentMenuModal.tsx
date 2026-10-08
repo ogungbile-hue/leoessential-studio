@@ -199,8 +199,10 @@ export const TreatmentMenuModal: React.FC<TreatmentMenuModalProps> = ({
 
                 <div className="pt-4 border-t border-[#1C1917]/10 flex items-center justify-between mt-2">
                   <div>
-                    <span className="text-[10px] uppercase tracking-wider text-[#7A7267] block">
-                      Investment
+                    <span className="text-[10px] uppercase font-mono tracking-wider text-[#C49A70] block font-semibold">
+                      {currency === 'NGN'
+                        ? `₦${(service.depositNgn || 15000).toLocaleString()} Paystack Deposit`
+                        : `$${(service.depositUsd || 35)} Deposit`}
                     </span>
                     <span className="font-editorial text-xl font-semibold text-[#1C1917]">
                       {currency === 'NGN'
@@ -209,18 +211,15 @@ export const TreatmentMenuModal: React.FC<TreatmentMenuModalProps> = ({
                     </span>
                   </div>
 
-                  <a
-                    href={STUDIO_CONFIG.squareBookingUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
                     onClick={() => {
                       if (onBookItem) onBookItem(service);
                     }}
-                    className="inline-flex items-center gap-1.5 bg-[#1C1917] hover:bg-[#C49A70] text-[#FAF8F5] px-4 py-2 text-xs uppercase tracking-widest font-medium transition-colors"
+                    className="inline-flex items-center gap-1.5 bg-[#1C1917] hover:bg-[#C49A70] text-[#FAF8F5] px-4 py-2 text-xs uppercase tracking-widest font-medium transition-colors cursor-pointer"
                   >
                     <span>Reserve Slot</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
-                  </a>
+                  </button>
                 </div>
               </div>
             ))}
@@ -237,16 +236,10 @@ export const TreatmentMenuModal: React.FC<TreatmentMenuModalProps> = ({
 
         {/* Footer info */}
         <div className="p-4 sm:p-6 bg-[#FAF8F5] border-t border-[#1C1917]/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#7A7267]">
-          <span>All appointments require a non-refundable deposit credited toward your final total.</span>
-          <a
-            href={STUDIO_CONFIG.squareBookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#1C1917] font-semibold hover:text-[#C49A70] flex items-center gap-1 shrink-0"
-          >
-            <span>Open Square Booking Calendar</span>
-            <ExternalLink className="w-3.5 h-3.5" />
-          </a>
+          <span>Non-refundable deposit settled via Paystack and credited toward your final total.</span>
+          <div className="flex items-center gap-2 text-[#1C1917] font-mono text-[11px]">
+            <span>Verified by WhatsApp Concierge</span>
+          </div>
         </div>
       </div>
     </div>

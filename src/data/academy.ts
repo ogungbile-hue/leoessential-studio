@@ -8,6 +8,8 @@ export const ACADEMY_COURSES: AcademyCourse[] = [
     duration: '2 Full Days (16 Hours)',
     priceNgn: 180000,
     priceUsd: 420,
+    depositNgn: 50000,
+    depositUsd: 120,
     description: 'An uncompromising, hands-on masterclass led directly by Adedoyin Elegunde. You will learn the science, ergonomics, and ocular hygiene necessary to build a high-ticket lash practice from the ground up.',
     syllabus: [
       'Ocular Anatomy, Cyanoacrylate Polymerization & Hygrometry Science',
@@ -15,7 +17,7 @@ export const ACADEMY_COURSES: AcademyCourse[] = [
       'Custom Eye Shape Mapping (Cat Eye, Doll Eye, Natural Kitten)',
       'Sterilization, Autoclave Procedures & Client Allergenic Screening',
       'Live Model Mentorship supervised step-by-step by Adedoyin',
-      'Square Appointments Setup, Pricing Architecture & Client Retention',
+      'Paystack Booking Setup, Pricing Architecture & High-Ticket Client Retention',
     ],
     kitIncluded: [
       '2 Precision Japanese Steel Hand-Tested Tweezers (Isolation & Curved)',
@@ -35,6 +37,8 @@ export const ACADEMY_COURSES: AcademyCourse[] = [
     duration: '3 Full Days (24 Hours)',
     priceNgn: 280000,
     priceUsd: 650,
+    depositNgn: 80000,
+    depositUsd: 190,
     description: 'Our most comprehensive mentorship immersion. Master both lash extension artistry (Classic & Handcrafted Volume) as well as semi-permanent Ombré Powder Brow rotary machine pigmentation in one seamless program.',
     syllabus: [
       'Classic & Russian Handcrafted Volume Fan Pinching Mechanics',
@@ -62,6 +66,8 @@ export const ACADEMY_COURSES: AcademyCourse[] = [
     duration: '1 Full Day (8 Hours)',
     priceNgn: 95000,
     priceUsd: 225,
+    depositNgn: 30000,
+    depositUsd: 70,
     description: 'A dedicated diagnostic clinic for practicing lash artists. We dismantle your current workstation, correct muscle ergonomics, solve elusive adhesive shock polymerization, and teach narrow fan pinching.',
     syllabus: [
       'Deep diagnostic review of your current application time & retention rate',

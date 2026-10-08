@@ -13,11 +13,12 @@ import { STUDIO_CONFIG } from '../data/studio';
 
 interface HeroCarouselProps {
   onExploreClick?: () => void;
+  onBookClick?: () => void;
 }
 
 const AUTOPLAY_INTERVAL = 6000; // 6 seconds matching Bidelat Couture standard
 
-export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onExploreClick }) => {
+export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onExploreClick, onBookClick }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
@@ -180,16 +181,17 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onExploreClick }) =>
           Direct adaptation of Bidelat Couture's glass px-8 py-5 rounded-full
         */}
         <div className="glass px-6 sm:px-9 py-3.5 sm:py-4 rounded-full flex gap-6 sm:gap-10 items-center shadow-2xl backdrop-blur-md border border-white/20">
-          <a
-            href={STUDIO_CONFIG.squareBookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => {
+              if (onBookClick) onBookClick();
+              else if (onExploreClick) onExploreClick();
+            }}
             className="text-[11px] sm:text-xs uppercase tracking-widest font-semibold text-white hover:text-[#C49A70] transition-colors flex items-center gap-2 group cursor-pointer"
           >
             <Calendar className="w-3.5 h-3.5 text-[#C49A70]" />
             <span>Book Appointment</span>
             <ArrowUpRight className="w-3.5 h-3.5 text-white/60 group-hover:text-[#C49A70] transition-colors" />
-          </a>
+          </button>
 
           {/* Vertical subtle divider line */}
           <div className="w-[1px] h-4 bg-white/25" />

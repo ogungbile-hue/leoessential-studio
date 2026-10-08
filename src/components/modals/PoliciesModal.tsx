@@ -6,9 +6,14 @@ import { STUDIO_CONFIG } from '../../data/studio';
 interface PoliciesModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onBookAppointment?: () => void;
 }
 
-export const PoliciesModal: React.FC<PoliciesModalProps> = ({ isOpen, onClose }) => {
+export const PoliciesModal: React.FC<PoliciesModalProps> = ({
+  isOpen,
+  onClose,
+  onBookAppointment,
+}) => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -107,14 +112,15 @@ export const PoliciesModal: React.FC<PoliciesModalProps> = ({ isOpen, onClose })
             Have questions regarding allergies, pre-treatment disclosures, or booking questions?
           </div>
 
-          <a
-            href={STUDIO_CONFIG.squareBookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 bg-[#1C1917] hover:bg-[#C49A70] text-[#FAF8F5] px-5 py-2.5 text-xs uppercase tracking-widest font-semibold transition-colors shrink-0 shadow-sm"
+          <button
+            onClick={() => {
+              onClose();
+              if (onBookAppointment) onBookAppointment();
+            }}
+            className="inline-flex items-center gap-1.5 bg-[#1C1917] hover:bg-[#C49A70] text-[#FAF8F5] px-5 py-2.5 text-xs uppercase tracking-widest font-semibold transition-colors shrink-0 shadow-sm cursor-pointer"
           >
-            <span>Acknowledge & Book via Square</span>
-          </a>
+            <span>Acknowledge & Book (Paystack)</span>
+          </button>
         </div>
       </div>
     </div>

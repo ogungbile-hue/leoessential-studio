@@ -4,6 +4,7 @@ import { TreatmentMenuModal } from './components/modals/TreatmentMenuModal';
 import { AcademyModal } from './components/modals/AcademyModal';
 import { PoliciesModal } from './components/modals/PoliciesModal';
 import { CareGuideModal } from './components/modals/CareGuideModal';
+import { BookingModal } from './components/modals/BookingModal';
 import { STUDIO_CONFIG } from './data/studio';
 import {
   Calendar,
@@ -24,6 +25,7 @@ import {
   GraduationCap,
   MapPin,
   HeartHandshake,
+  CreditCard,
 } from 'lucide-react';
 
 const LOGO_VECTOR = `${import.meta.env.BASE_URL}logos/leoessential-vector-logo.svg`;
@@ -72,6 +74,8 @@ export function App() {
   const [isAcademyModalOpen, setIsAcademyModalOpen] = useState(false);
   const [isPoliciesModalOpen, setIsPoliciesModalOpen] = useState(false);
   const [isCareModalOpen, setIsCareModalOpen] = useState(false);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [selectedBookingServiceId, setSelectedBookingServiceId] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,6 +86,11 @@ export function App() {
   }, []);
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
+
+  const openBookingModal = (serviceId?: string) => {
+    setSelectedBookingServiceId(serviceId);
+    setIsBookingModalOpen(true);
+  };
 
   return (
     <div className="min-h-screen bg-[#FAF8F5] text-[#1C1917] font-sans selection:bg-[#C49A70]/20 selection:text-[#1C1917]">
@@ -163,11 +172,9 @@ export function App() {
 
           {/* Primary Action Button */}
           <div className="hidden lg:flex items-center gap-4">
-            <a
-              href={STUDIO_CONFIG.squareBookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-flex items-center gap-2 px-5 py-2.5 text-xs uppercase tracking-widest font-medium transition-all duration-300 shadow-sm ${
+            <button
+              onClick={() => openBookingModal()}
+              className={`inline-flex items-center gap-2 px-5 py-2.5 text-xs uppercase tracking-widest font-medium transition-all duration-300 shadow-sm cursor-pointer ${
                 isScrolled
                   ? 'bg-[#1C1917] text-[#FAF8F5] hover:bg-[#C49A70]'
                   : 'bg-[#FAF8F5] text-[#1C1917] hover:bg-[#C49A70] hover:text-[#FAF8F5]'
@@ -175,7 +182,7 @@ export function App() {
             >
               <Calendar className="w-3.5 h-3.5" />
               <span>Reserve Appointment</span>
-            </a>
+            </button>
           </div>
 
           {/* Mobile Menu Hamburger */}
@@ -248,15 +255,15 @@ export function App() {
             </div>
 
             <div className="pt-2">
-              <a
-                href={STUDIO_CONFIG.squareBookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={closeMobileMenu}
-                className="block w-full py-3 bg-[#C49A70] text-white text-xs uppercase tracking-widest font-semibold"
+              <button
+                onClick={() => {
+                  closeMobileMenu();
+                  openBookingModal();
+                }}
+                className="w-full py-3 bg-[#C49A70] hover:bg-[#1C1917] text-white text-xs uppercase tracking-widest font-semibold transition-colors cursor-pointer"
               >
-                Reserve Your Appointment
-              </a>
+                Reserve Your Appointment (Paystack)
+              </button>
             </div>
           </div>
         )}
@@ -270,6 +277,7 @@ export function App() {
           const el = document.getElementById('signature');
           if (el) el.scrollIntoView({ behavior: 'smooth' });
         }}
+        onBookClick={() => openBookingModal()}
       />
 
       {/* =========================================================================
@@ -358,14 +366,14 @@ export function App() {
               <div className="pt-4 flex flex-wrap items-center gap-4">
                 <button
                   onClick={() => setIsMenuModalOpen(true)}
-                  className="inline-flex items-center gap-2 bg-[#1C1917] hover:bg-[#C49A70] text-[#FAF8F5] px-6 py-3 text-xs uppercase tracking-widest font-semibold transition-colors shadow-sm"
+                  className="inline-flex items-center gap-2 bg-[#1C1917] hover:bg-[#C49A70] text-[#FAF8F5] px-6 py-3 text-xs uppercase tracking-widest font-semibold transition-colors shadow-sm cursor-pointer"
                 >
                   <span>Explore Treatment Menu</span>
                   <ChevronRight className="w-3.5 h-3.5" />
                 </button>
                 <button
                   onClick={() => setIsPoliciesModalOpen(true)}
-                  className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest font-medium text-[#7A7267] hover:text-[#1C1917] transition-colors py-3 px-2"
+                  className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest font-medium text-[#7A7267] hover:text-[#1C1917] transition-colors py-3 px-2 cursor-pointer"
                 >
                   <span>Studio Etiquette & Policies</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -426,15 +434,13 @@ export function App() {
                 </div>
 
                 <div className="pt-4 border-t border-[#1C1917]/10">
-                  <a
-                    href={STUDIO_CONFIG.squareBookingUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full inline-flex items-center justify-center gap-1.5 bg-[#1C1917] hover:bg-[#C49A70] text-[#FAF8F5] py-2.5 text-xs uppercase tracking-widest font-semibold transition-colors"
+                  <button
+                    onClick={() => openBookingModal('lash-classic')}
+                    className="w-full inline-flex items-center justify-center gap-1.5 bg-[#1C1917] hover:bg-[#C49A70] text-[#FAF8F5] py-2.5 text-xs uppercase tracking-widest font-semibold transition-colors cursor-pointer"
                   >
-                    <span>Reserve Classic Set</span>
+                    <span>Reserve Classic Set (₦15k Deposit)</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -472,15 +478,13 @@ export function App() {
                 </div>
 
                 <div className="pt-4 border-t border-[#1C1917]/10">
-                  <a
-                    href={STUDIO_CONFIG.squareBookingUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full inline-flex items-center justify-center gap-1.5 bg-[#C49A70] hover:bg-[#1C1917] text-white py-2.5 text-xs uppercase tracking-widest font-semibold transition-colors"
+                  <button
+                    onClick={() => openBookingModal('lash-hybrid')}
+                    className="w-full inline-flex items-center justify-center gap-1.5 bg-[#C49A70] hover:bg-[#1C1917] text-white py-2.5 text-xs uppercase tracking-widest font-semibold transition-colors cursor-pointer"
                   >
-                    <span>Reserve Hybrid Set</span>
+                    <span>Reserve Hybrid Set (₦15k Deposit)</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -514,15 +518,13 @@ export function App() {
                 </div>
 
                 <div className="pt-4 border-t border-[#1C1917]/10">
-                  <a
-                    href={STUDIO_CONFIG.squareBookingUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full inline-flex items-center justify-center gap-1.5 bg-[#1C1917] hover:bg-[#C49A70] text-[#FAF8F5] py-2.5 text-xs uppercase tracking-widest font-semibold transition-colors"
+                  <button
+                    onClick={() => openBookingModal('lash-volume')}
+                    className="w-full inline-flex items-center justify-center gap-1.5 bg-[#1C1917] hover:bg-[#C49A70] text-[#FAF8F5] py-2.5 text-xs uppercase tracking-widest font-semibold transition-colors cursor-pointer"
                   >
-                    <span>Reserve Volume Set</span>
+                    <span>Reserve Volume Set (₦15k Deposit)</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -544,7 +546,7 @@ export function App() {
 
             <button
               onClick={() => setIsMenuModalOpen(true)}
-              className="inline-flex items-center gap-2 bg-[#1C1917] hover:bg-[#C49A70] text-[#FAF8F5] px-6 py-3 text-xs uppercase tracking-widest font-semibold transition-colors shrink-0 shadow-sm"
+              className="inline-flex items-center gap-2 bg-[#1C1917] hover:bg-[#C49A70] text-[#FAF8F5] px-6 py-3 text-xs uppercase tracking-widest font-semibold transition-colors shrink-0 shadow-sm cursor-pointer"
             >
               <span>View Treatment Menu & Pricing</span>
               <ArrowUpRight className="w-4 h-4" />
@@ -600,7 +602,7 @@ export function App() {
               <div className="pt-2 flex flex-wrap items-center gap-4">
                 <button
                   onClick={() => setIsAcademyModalOpen(true)}
-                  className="inline-flex items-center gap-2 bg-[#C49A70] hover:bg-white hover:text-[#1C1917] text-white px-6 py-3.5 text-xs uppercase tracking-widest font-semibold transition-all shadow-sm"
+                  className="inline-flex items-center gap-2 bg-[#C49A70] hover:bg-white hover:text-[#1C1917] text-white px-6 py-3.5 text-xs uppercase tracking-widest font-semibold transition-all shadow-sm cursor-pointer"
                 >
                   <span>Explore Curriculum & Student Kit</span>
                   <ArrowUpRight className="w-4 h-4" />
@@ -653,7 +655,7 @@ export function App() {
                 <div className="pt-2 text-right">
                   <button
                     onClick={() => setIsAcademyModalOpen(true)}
-                    className="text-xs uppercase font-mono tracking-widest text-[#C49A70] hover:text-white inline-flex items-center gap-1"
+                    className="text-xs uppercase font-mono tracking-widest text-[#C49A70] hover:text-white inline-flex items-center gap-1 cursor-pointer"
                   >
                     <span>Read Full Prospectus</span>
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -748,7 +750,7 @@ export function App() {
       </section>
 
       {/* =========================================================================
-          RESERVATION & CONTACT: Direct Unhurried Booking Callout
+          RESERVATION & CONTACT: Paystack Deposit & Concierge Desk
       ========================================================================= */}
       <section className="py-20 bg-[#FAF8F5] border-t border-[#1C1917]/10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
@@ -757,19 +759,17 @@ export function App() {
             Reserve Your Sanctuary Session
           </h2>
           <p className="text-xs sm:text-sm text-[#7A7267] max-w-xl mx-auto leading-relaxed">
-            Appointments are scheduled securely via Square. A non-refundable booking deposit confirms your time and is credited directly to your treatment on arrival.
+            Appointments require a non-refundable booking deposit settled securely via Paystack. Your deposit is immediately credited toward your final treatment balance on arrival.
           </p>
 
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href={STUDIO_CONFIG.squareBookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#1C1917] hover:bg-[#C49A70] text-[#FAF8F5] px-8 py-4 text-xs uppercase tracking-widest font-semibold transition-colors shadow-md"
+            <button
+              onClick={() => openBookingModal()}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#1C1917] hover:bg-[#C49A70] text-[#FAF8F5] px-8 py-4 text-xs uppercase tracking-widest font-semibold transition-colors shadow-md cursor-pointer"
             >
-              <Calendar className="w-4 h-4" />
-              <span>Book Online via Square Appointments</span>
-            </a>
+              <CreditCard className="w-4 h-4 text-[#C49A70]" />
+              <span>Reserve Slot with Paystack Deposit</span>
+            </button>
 
             <a
               href={`https://wa.me/${STUDIO_CONFIG.whatsappNumber}?text=${encodeURIComponent('Hello Adedoyin, I would like to inquire about booking an appointment at Leoessential Studio.')}`}
@@ -824,6 +824,14 @@ export function App() {
                 Explore The Atelier
               </span>
               <ul className="space-y-2 text-xs text-[#EFE9DF]/80">
+                <li>
+                  <button
+                    onClick={() => openBookingModal()}
+                    className="hover:text-white transition-colors cursor-pointer text-left text-[#C49A70] font-semibold"
+                  >
+                    Reserve Appointment (Paystack)
+                  </button>
+                </li>
                 <li>
                   <button
                     onClick={() => setIsMenuModalOpen(true)}
@@ -923,6 +931,10 @@ export function App() {
       <TreatmentMenuModal
         isOpen={isMenuModalOpen}
         onClose={() => setIsMenuModalOpen(false)}
+        onBookItem={(item) => {
+          setIsMenuModalOpen(false);
+          openBookingModal(item.id);
+        }}
       />
 
       <AcademyModal
@@ -933,11 +945,19 @@ export function App() {
       <PoliciesModal
         isOpen={isPoliciesModalOpen}
         onClose={() => setIsPoliciesModalOpen(false)}
+        onBookAppointment={() => openBookingModal()}
       />
 
       <CareGuideModal
         isOpen={isCareModalOpen}
         onClose={() => setIsCareModalOpen(false)}
+        onBookAppointment={() => openBookingModal()}
+      />
+
+      <BookingModal
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        initialServiceId={selectedBookingServiceId}
       />
 
     </div>

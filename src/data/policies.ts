@@ -3,11 +3,11 @@ import { StudioPolicy } from '../types';
 export const POLICIES_DATA: StudioPolicy[] = [
   {
     id: 1,
-    title: '1. Non-Refundable Booking Deposit via Square',
+    title: '1. Non-Refundable Booking Deposit via Paystack',
     shortDesc: 'A mandatory deposit is required to lock in your appointment slot.',
     severity: 'vital',
     fullDetails: [
-      'To honor the deliberate preparation and 1:1 dedication required for each bespoke session, all appointments require a non-refundable booking deposit charged securely via Square.',
+      'To honor the deliberate preparation and 1:1 dedication required for each bespoke session, all appointments require a non-refundable booking deposit settled securely via Paystack (Debit/Credit Cards, Bank Transfer, or USSD).',
       'This deposit is immediately credited towards your final service balance on appointment day.',
       'Appointments are held for a maximum of 30 minutes pending deposit payment before releasing back into public studio availability.',
       'Deposits are strictly non-refundable in the event of client cancellation or failure to attend.',

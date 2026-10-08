@@ -5,9 +5,14 @@ import { STUDIO_CONFIG } from '../../data/studio';
 interface CareGuideModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onBookAppointment?: () => void;
 }
 
-export const CareGuideModal: React.FC<CareGuideModalProps> = ({ isOpen, onClose }) => {
+export const CareGuideModal: React.FC<CareGuideModalProps> = ({
+  isOpen,
+  onClose,
+  onBookAppointment,
+}) => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -132,14 +137,15 @@ export const CareGuideModal: React.FC<CareGuideModalProps> = ({ isOpen, onClose 
             Need an emergency touch-up or gentle professional removal?
           </div>
 
-          <a
-            href={STUDIO_CONFIG.squareBookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 bg-[#1C1917] hover:bg-[#C49A70] text-[#FAF8F5] px-5 py-2.5 text-xs uppercase tracking-widest font-semibold transition-colors shrink-0 shadow-sm"
+          <button
+            onClick={() => {
+              onClose();
+              if (onBookAppointment) onBookAppointment();
+            }}
+            className="inline-flex items-center gap-1.5 bg-[#1C1917] hover:bg-[#C49A70] text-[#FAF8F5] px-5 py-2.5 text-xs uppercase tracking-widest font-semibold transition-colors shrink-0 shadow-sm cursor-pointer"
           >
-            <span>Book Appointment via Square</span>
-          </a>
+            <span>Reserve Appointment (Paystack)</span>
+          </button>
         </div>
       </div>
     </div>

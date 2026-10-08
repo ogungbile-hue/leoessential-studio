@@ -10,6 +10,8 @@ export interface ServiceItem {
   duration?: string;
   priceNgn: number;
   priceUsd: number;
+  depositNgn: number;
+  depositUsd: number;
   description: string;
   features: string[];
   recommendedFor?: string;
@@ -47,11 +49,36 @@ export interface AcademyCourse {
   duration: string;
   priceNgn: number;
   priceUsd: number;
+  depositNgn: number;
+  depositUsd: number;
   description: string;
   syllabus: string[];
   kitIncluded: string[];
   prerequisites: string;
   cohortCapacity: string;
+}
+
+export interface PaystackTransactionResponse {
+  reference: string;
+  status: string;
+  trans: string;
+  message: string;
+  transaction: string;
+}
+
+export interface BookingConfirmation {
+  reference: string;
+  customerName: string;
+  customerEmail: string;
+  customerPhone: string;
+  serviceTitle: string;
+  appointmentDate: string;
+  appointmentTime: string;
+  depositPaidNgn: number;
+  balanceDueNgn: number;
+  totalNgn: number;
+  createdAt: string;
+  notes?: string;
 }
 
 export interface ClientReview {

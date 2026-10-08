@@ -10,6 +10,8 @@ export const SERVICES_DATA: ServiceItem[] = [
     duration: '105 Mins',
     priceNgn: 35000,
     priceUsd: 85,
+    depositNgn: 15000,
+    depositUsd: 35,
     description: 'An understated, refined set where a single ultra-lightweight synthetic silk extension is adhered to each mature natural lash. Designed for clients desiring mascara-like perfection without clumping or artificial density.',
     features: [
       '1:1 medical-grade isolation guarantee',
@@ -29,6 +31,8 @@ export const SERVICES_DATA: ServiceItem[] = [
     duration: '120 Mins',
     priceNgn: 42000,
     priceUsd: 105,
+    depositNgn: 15000,
+    depositUsd: 35,
     isPopular: true,
     description: 'Our most requested signature balance. Seamlessly marries classic single extensions with 3D–4D handcrafted volume fans to fill sparse lash lines with delicate texture and gentle, airy fluffiness.',
     features: [
@@ -49,6 +53,8 @@ export const SERVICES_DATA: ServiceItem[] = [
     duration: '135 Mins',
     priceNgn: 50000,
     priceUsd: 125,
+    depositNgn: 15000,
+    depositUsd: 35,
     description: 'High-impact yet weightless. Handcrafted fans of 4D–7D ultra-fine extensions (.05mm) mapped with architectural peak spikes. Delivers a soft, velvety lash line with striking, eye-opening contour.',
     features: [
       'Bespoke Kim-K / Wispy mapping sculpted to orbital bone structure',
@@ -68,6 +74,8 @@ export const SERVICES_DATA: ServiceItem[] = [
     duration: '75 Mins',
     priceNgn: 22000,
     priceUsd: 55,
+    depositNgn: 10000,
+    depositUsd: 25,
     description: 'Essential bi-weekly ritual to maintain flawless lash architecture. Grown-out extensions are gently peeled away with sterile micro-tweezers, followed by a clarifying lash bath and meticulous replenishment.',
     features: [
       'Required every 2 to 3 weeks (must have 40%+ existing extensions)',
@@ -87,6 +95,8 @@ export const SERVICES_DATA: ServiceItem[] = [
     duration: '40 Mins',
     priceNgn: 10000,
     priceUsd: 25,
+    depositNgn: 5000,
+    depositUsd: 15,
     description: 'Professional cream-dissolving treatment that gently breaks down adhesive cyanoacrylate without pulling or snapping natural hairs. Completed with a fortifying botanical keratin glaze.',
     features: [
       'Zero mechanical pulling — solvent-softened gentle slide',
@@ -108,6 +118,8 @@ export const SERVICES_DATA: ServiceItem[] = [
     duration: '150 Mins',
     priceNgn: 75000,
     priceUsd: 180,
+    depositNgn: 25000,
+    depositUsd: 60,
     isPopular: true,
     description: 'Adedoyin’s premier semi-permanent cosmetic tattooing procedure. Utilizes a fine single-needle rotary device to deposit organic pigment in a delicate pixelated gradient — soft at the bulb, crisply tailored at the tail.',
     features: [
@@ -128,6 +140,8 @@ export const SERVICES_DATA: ServiceItem[] = [
     duration: '45 Mins',
     priceNgn: 15000,
     priceUsd: 40,
+    depositNgn: 5000,
+    depositUsd: 15,
     description: 'An editorial brow refresh. We formulate a bespoke semi-permanent dye tailored to your hair undertones, sculpt the contours using gentle strip-free wax, and hand-tweeze stray stragglers to crisp perfection.',
     features: [
       'Color chemistry matched precisely to hair and skin complexion',
@@ -147,6 +161,8 @@ export const SERVICES_DATA: ServiceItem[] = [
     duration: '60 Mins',
     priceNgn: 25000,
     priceUsd: 60,
+    depositNgn: 10000,
+    depositUsd: 25,
     description: 'Non-invasive restructuring of brow hairs using a gentle keratin-infused solution. Straightens and redirects coarse, unruly, or downward-growing hairs for a sleek, brushed-up editorial look lasting up to 7 weeks.',
     features: [
       'Gentle cysteamine bond-breaking formulation respecting follicle integrity',
@@ -166,6 +182,8 @@ export const SERVICES_DATA: ServiceItem[] = [
     duration: '90 Mins',
     priceNgn: 30000,
     priceUsd: 75,
+    depositNgn: 10000,
+    depositUsd: 25,
     description: 'The mandatory perfecting session following initial Ombré shading. Once the epidermal skin has completely healed, we evaluate pigment retention, intensify areas that shed lighter, and lock in long-term permanence.',
     features: [
       'Detailed evaluation of pigment absorption and healing tone',
